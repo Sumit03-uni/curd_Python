@@ -1,0 +1,42 @@
+{% extends 'layout.html'%}
+
+{% block body %}
+
+{% if employees %}
+<div class="container">
+    <table class="table table-responsive table-bordered caption-top border border-success border-5">
+        <caption class="text-bg-success text-xl-center fs-3 fw-bolder border border-success rounded-top-3">List of
+            Employees</caption>
+        <thead class="table-dark">
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Employee Email</th>
+                <th>Employee Contact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.eid }}</td>
+                <td>{{ employee.ename }}</td>
+                <td>{{ employee.eemail }}</td>
+                <td>{{ employee.econtact }}</td>
+                <td>
+                    <a href="/edit/{{ employee.id }}" class="text-decoration-none btn btn-info">Edit</a>
+                    <a href="/delete/{{ employee.id }}" class="text-decoration-none btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    {% else %}
+    <p class="text-xxl-center fw-bolder fs-1">Write now, we have not data. If you add new employee, then <a
+            class="text-decoration-none" href="{% url "epe" %}">Click here..</a> </p>
+    {% endif %}
+    <br>
+</div>
+
+{% endblock body %}
