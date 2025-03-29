@@ -7,4 +7,4 @@ class Employee(models.Model):
     empEmail = models.EmailField()
     empContact = models.CharField(max_length=10)
     class Meta:
-        db_table = 'employee'
+        db_table = 'employee_new'
